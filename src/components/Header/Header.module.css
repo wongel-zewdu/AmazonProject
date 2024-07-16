@@ -71,54 +71,67 @@
 .header__search:focus-within {
   border: 2px solid rgb(235, 161, 173);
 }
-.header__account{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 450px;
-    gap:10px;
+.header__account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 450px;
+  gap: 10px;
 }
-.header__account a{
-    text-decoration: none;
-    color: white;
-
+.header__account a {
+  text-decoration: none;
+  color: white;
 }
-.header__account p{
-    font-size: 10px;
+.header__account p {
+  font-size: 10px;
 }
-.header__account img{
-    width: 5vw;
-    
+.header__account img {
+  width: 5vw;
 }
-.header__account_border{
-    display: flex;
+.header__account_border {
+  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-.header__account_image{
-    display: flex;
-    /* padding: 10px; */
+.header__account_image {
+  display: flex;
+  /* padding: 10px; */
 }
-.header__account_select{
-    
-background-color: #1a1a1a;
-border: none;
-color: white;
+.header__account_select {
+  background-color: #1a1a1a;
+  border: none;
+  color: white;
 }
 .header__account_cart {
-    position: relative;
+  position: relative;
 }
-.header__account_span{
-    position: absolute;
-    font-weight: bold;
-    top: -4px;
-    font-size: 20px;
-    background-color: #1a1a1a;
-    left: 15px;
-    color: orange;
+.header__account_span {
+  position: absolute;
+  font-weight: bold;
+  top: -4px;
+  font-size: 20px;
+  background-color: #1a1a1a;
+  left: 15px;
+  color: orange;
 }
-.header__delivery:hover, .header__logo_continer img:hover, .header__account_border:hover, .header__account_link:hover, .header__account_para:hover, .header__account_cart:hover{
-    border: 1px solid white;
-    border-radius: 3px;
+.header__delivery:hover,
+.header__logo_continer img:hover,
+.header__account_border:hover,
+.header__account_link:hover,
+.header__account_para:hover,
+.header__account_cart:hover {
+  border: 1px solid white;
+  border-radius: 3px;
+}
+@media (max-width: 576px) {
+  .header__continer {
+    display: flex;
+    flex-direction: column !important;
+    height: auto;
+  }
+
+  .header__account_border {
+    display: none;
+  }
 }

@@ -1,0 +1,24 @@
+.lowerHeader {
+  background-color: #232f3e;
+  color: white;
+}
+.lowerHeader__menuList {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+}
+.lowerHeader__menuItem {
+  padding: 8px;
+}
+.lowerHeader__menuItem:first-child {
+  display: flex;
+}
+.lowerHeader__menuItem:hover {
+  border: 1px solid white;
+  border-radius: 3px;
+}
+@media (max-width: 576px) {
+  .lowerHeader__menuItem:not(:first-child) {
+    display: none;
+  }
+}

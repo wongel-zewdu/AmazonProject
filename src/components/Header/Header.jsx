@@ -1,7 +1,9 @@
 import React from "react";
+import LowerHeader from "../LowerHeader/LowerHeader"
 import { FaSearch } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { SlLocationPin } from "react-icons/sl";
+// import LowerHeader from "../LowerHeader/LowerHeader";
 
 import classes from "./Header.module.css";
 const Header = () => {
@@ -57,8 +59,12 @@ const Header = () => {
           <span className={classes.header__account_span}>0</span>
           </a>
         </div>
+        
       </section>
+      <LowerHeader/>
+      
     </section>
+    
   );
 };
 
