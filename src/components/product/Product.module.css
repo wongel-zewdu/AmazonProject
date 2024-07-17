@@ -48,6 +48,35 @@ position: absolute;
 margin: 0 auto;
 padding: 20px 50px;
 }
-/* .product__container section{
-    /* margin: 0 auto; */
-/* }   */
+.product__flexed{
+  box-shadow: none;
+  height: auto;
+  display: flex;
+  gap: 50px;
+  width: 100%;
+}
+.product__flexed .card__title{
+  padding: 20px 0px;
+}
+.product__flexed .card__button{
+display: block;
+position: static;
+width: 150px;
+margin-right: 40px;
+}
+.product__flexed{
+  height: 50vh;
+}
+.product__flexed .card__image{
+  width: 300px !important;
+  height: auto;
+}
+.product__desc{
+  max-width: 600px;
+}
+@media  (max-width:768px){
+  .product__flexed{
+    display: flex;
+    flex-direction: column;
+  }
+}
