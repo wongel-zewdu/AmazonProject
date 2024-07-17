@@ -1,22 +1,23 @@
-import React from "react";
-import LowerHeader from "../LowerHeader/LowerHeader"
+
+
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaSearch } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { SlLocationPin } from "react-icons/sl";
-// import LowerHeader from "../LowerHeader/LowerHeader";
-
 import classes from "./Header.module.css";
+import LowerHeader from "../LowerHeader/LowerHeader";
 const Header = () => {
   return (
     <section className={classes.header}>
       <section className={classes.header__continer}>
         <div className={classes.header__logo_continer}>
-          <a href="">
+          <Link to="/">
             <img
               src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
-              alt="amazon log"
+              alt="amazon logo"
             />
-          </a>
+          </Link>
           <div className={classes.header__delivery}>
             <span>
               <SlLocationPin />
@@ -37,35 +38,36 @@ const Header = () => {
 
         <div className={classes.header__account}>
           <div className={classes.header__account_border}>
-            <a href="" classes={classes.header__account_image}>
-              <img src="https://pngimg.com/uploads/flags/flags_PNG14592.png"></img>
-            </a>
+            <Link to="/" className={classes.header__account_image}>
+              <img
+                src="https://pngimg.com/uploads/flags/flags_PNG14592.png"
+                alt="flag"
+              />
+            </Link>
             <select className={classes.header__account_select}>
               <option value="">EN</option>
             </select>
           </div>
-          <a href="">
+          <Link to="/auth">
             <div className={classes.header__account_link}>
               <p>Sign In</p>
               <span>Account & Lists</span>
             </div>
-          </a>
-          <a href="" className={classes.header__account_para}>
+          </Link>
+          <Link to="/orders" className={classes.header__account_para}>
             <p>Returns</p>
             <span>& Orders</span>
-          </a>
-          <a href="" className={classes.header__account_cart}>
-          <IoCartOutline size={35} />
-          <span className={classes.header__account_span}>0</span>
-          </a>
+          </Link>
+          <Link to="/cart" className={classes.header__account_cart}>
+            <IoCartOutline size={35} />
+            <span className={classes.header__account_span}>0</span>
+          </Link>
         </div>
-        
       </section>
-      <LowerHeader/>
-      
+      <LowerHeader />
     </section>
-    
   );
 };
 
 export default Header;
+
