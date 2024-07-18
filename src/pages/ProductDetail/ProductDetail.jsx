@@ -46,7 +46,7 @@ const ProductDetail = () => {
         product={product}
         flex={true}
         renderDesc={true}
-        renderAdd={true}
+        renderAdd={false}
       />
     </div>
   );
