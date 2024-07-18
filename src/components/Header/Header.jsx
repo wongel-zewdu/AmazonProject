@@ -10,7 +10,9 @@ import LowerHeader from "../LowerHeader/LowerHeader";
 import { DataContext } from '../DataProvider/Data provider';
 const Header = () => {
   const [{basket},dispatch]=useContext(DataContext)
-
+const totalItem = basket?.reduce((amount,item)=>{
+  return item.amount + amount
+},0)
   return (
     <section className={classes.header}>
       <section className={classes.header__continer}>
@@ -63,7 +65,7 @@ const Header = () => {
           </Link>
           <Link to="/cart" className={classes.header__account_cart}>
             <IoCartOutline size={35} />
-            <span className={classes.header__account_span}>{basket.length}</span>
+            <span className={classes.header__account_span}>{totalItem}</span>
           </Link>
         </div>
       </section>

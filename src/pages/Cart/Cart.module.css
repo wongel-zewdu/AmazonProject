@@ -51,3 +51,30 @@ color: black;
         order: 1;
     }
 }
+.cart__amount{
+    display: flex;
+    gap:10px;
+    
+  margin-bottom: 200px;
+    
+}
+.cart__button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding-top: 100px;
+     margin-top: 20px;
+
+}
+.cart__button_both{
+    padding: 5px 16px;
+    font-weight: bold;
+    background-color: #fff;
+    cursor: pointer;
+    border: none;
+}
+/* .cart__button:hover{
+    background-color: #febd69;
+} */
