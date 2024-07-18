@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import classes from "./Product.module.css";
 import axios from "axios";
@@ -31,10 +30,14 @@ const Product = () => {
   return (
     <section className={classes.product__container}>
       {products.map((singleProduct) => {
-        return <ProductCard key={singleProduct.id} product={singleProduct} />
+        return (
+          <ProductCard
+            key={singleProduct.id}
+            product={singleProduct}
+            renderAdd={true}
+          />
+        );
       })}
-        
-      
     </section>
   );
 };

@@ -42,7 +42,12 @@ const ProductDetail = () => {
 
   return (
     <div>
-      <ProductCard product={product} flex={true} renderDesc={true} />
+      <ProductCard
+        product={product}
+        flex={true}
+        renderDesc={true}
+        renderAdd={true}
+      />
     </div>
   );
 };
