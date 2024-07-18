@@ -2,6 +2,13 @@
   padding: 0;
   margin: 0;
 }
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+}
 .header__continer {
   background-color: black;
   display: flex;
