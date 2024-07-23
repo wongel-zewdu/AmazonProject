@@ -1,18 +1,17 @@
-
-
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { SlLocationPin } from "react-icons/sl";
 import classes from "./Header.module.css";
 import LowerHeader from "../LowerHeader/LowerHeader";
-import { DataContext } from '../DataProvider/Data provider';
+import { DataContext } from "../DataProvider/Data provider";
+import { auth } from "../../utiliy/firebase";
 const Header = () => {
-  const [{basket},dispatch]=useContext(DataContext)
-const totalItem = basket?.reduce((amount,item)=>{
-  return item.amount + amount
-},0)
+  const [{ user, basket }, dispatch] = useContext(DataContext);
+  const totalItem = basket?.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
   return (
     <section className={classes.header}>
       <section className={classes.header__continer}>
@@ -53,11 +52,21 @@ const totalItem = basket?.reduce((amount,item)=>{
               <option value="">EN</option>
             </select>
           </div>
-          <Link to="/auth">
-            <div className={classes.header__account_link}>
-              <p>Sign In</p>
-              <span>Account & Lists</span>
+          <Link to={!user && "/auth"}>
+            <div>
+              {user ? (
+                <>
+                  <p>Hello {user.email?.split("@")[0]}</p>
+                  <span onClick={() => auth.signOut()}>Sign Out</span>
+                </>
+              ) : (
+                <>
+                  <p>Hello, Sign In</p>
+                  <span>Account & Lists</span>
+                </>
+              )}
             </div>
+            <div className={classes.header__account_link}></div>
           </Link>
           <Link to="/orders" className={classes.header__account_para}>
             <p>Returns</p>
@@ -75,4 +84,3 @@ const totalItem = basket?.reduce((amount,item)=>{
 };
 
 export default Header;
-

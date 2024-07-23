@@ -1,42 +1,56 @@
 import React, { useState, useContext } from "react";
 import amazonLog from "./amazon logo/amazon-logo-2.png";
 import classes from "./Auth.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../utiliy/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { DataContext } from "../../components/DataProvider/Data provider";
+import { ClipLoader } from "react-spinners";
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [{ user }, dispatch] = useContext(DataContext);
-  console.log(user);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState({
+    signIn: false,
+    signUP: false,
+  });
+
   const authHandler = async (e) => {
     e.preventDefault();
     if (e.target.name == "signin") {
+      setLoading({ ...loading, signIn: true });
       signInWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
           dispatch({
             type: "SET_USER",
             user: userInfo.user,
           });
+          setLoading({ ...loading, signIn: false });
+          navigate("/");
         })
         .catch((err) => {
-          console.log(err);
+          setError(err.message);
+          setLoading({ ...loading, signIn: false });
         });
     } else {
+      setLoading({ ...loading, signUP: true });
       createUserWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
           dispatch({
             type: "SET_USER",
             user: userInfo.user,
           });
+          setLoading({ ...loading, signUP: false });
+          navigate("/");
         })
         .catch((err) => {
-          setError(err.message)
+          setError(err.message);
+          setLoading({ ...loading, signUP: false });
         });
     }
   };
@@ -76,12 +90,12 @@ const Auth = () => {
               </div>
               <div>
                 <button
-                  type="submit"
+                  type="button"
                   onClick={authHandler}
                   name="signin"
                   className={classes.auth__siginButton}
                 >
-                  Sign In
+                  {loading.signIn ? <ClipLoader size={16} /> : "sign In"}
                 </button>
               </div>
             </div>
@@ -92,13 +106,18 @@ const Auth = () => {
             interest-Based Ads Notice.
           </p>
           <button
-            type="submit"
+            type="button"
             onClick={authHandler}
             name="signup"
             className={classes.auth__signupButton}
           >
-            Create Your Amazon Account
+            {loading.signUP ? (
+              <ClipLoader size={16} />
+            ) : (
+              " Create Your Amazon Account"
+            )}
           </button>
+          {error && <small className={classes.auth__error}>{error}</small>}
         </div>
       </div>
     </div>
@@ -106,4 +125,3 @@ const Auth = () => {
 };
 
 export default Auth;
-// ****************************************************************************88
