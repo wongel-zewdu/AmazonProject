@@ -4,9 +4,9 @@ import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./Product.module.css";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/Data provider";
-import { Type } from "../../utiliy/action.type";
-const ProductCard = ({ product, flex, renderDesc, renderAdd}) => {
-  const { image, title, id, rating, price, description,  } = product;
+import { Type } from "../../utility/action.type";
+const ProductCard = ({ product, flex, renderDesc, renderAdd }) => {
+  const { image, title, id, rating, price, description } = product;
   const [sate, dispatch] = useContext(DataContext);
 
   const addToCart = () => {
@@ -32,16 +32,14 @@ const ProductCard = ({ product, flex, renderDesc, renderAdd}) => {
         <div>
           <CurrencyFormat amount={price} />
         </div>
-        {
-          renderAdd &&<button className={classes.card__button} onClick={addToCart}>
-          add to cart
-        </button>
-        }
-        
+        {renderAdd && (
+          <button className={classes.card__button} onClick={addToCart}>
+            add to cart
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
 export default ProductCard;
-

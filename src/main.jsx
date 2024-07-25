@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import { DataProvider } from "./components/DataProvider/Data provider";  
-import { initialState, reducer } from "./utiliy/reducser";  
+import { initialState, reducer } from "./utility/reducer";  
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -6,23 +6,24 @@ import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { Type } from "../../utiliy/action.type";
+import { Type } from "../../utility/action.type";
 const Cart = () => {
   const [{ basket, user }, dispatch] = useContext(DataContext);
-  const total = basket.reduce((amount,item)=>{
-     return item.price * item.amount + amount
-  }, 0)
-  const increment = (item)=>{
+  const total = basket.reduce((amount, item) => {
+    return item.price * item.amount + amount;
+  }, 0);
+  const increment = (item) => {
     dispatch({
       type: Type.ADD_TO_BASKET,
-      item
+      item,
     });
-  }
-  const decrement =(id)=>{
+  };
+  const decrement = (id) => {
     dispatch({
-      type:Type.ADD_TO_BASKET,id
-    })
-  }
+      type: Type.ADD_TO_BASKET,
+      id,
+    });
+  };
   return (
     <div className={classes.cart__container}>
       <section className={classes.cart__containers}>
@@ -33,11 +34,10 @@ const Cart = () => {
           {basket?.length == 0 ? (
             <p>sorry! Your Amazon Cart is empty</p>
           ) : (
-            basket?.map((item, i) => {
+            basket?.map((item) => {
               return (
-                <section className={classes.cart__amount}>
+                <section key={item.id} className={classes.cart__amount}>
                   <ProductCard
-                    key={i}
                     product={item}
                     renderAdd={false}
                     renderDesc={true}
@@ -48,14 +48,14 @@ const Cart = () => {
                       className={classes.cart__button_both}
                       onClick={() => increment(item)}
                     >
-                       <IoIosArrowUp/>
+                      <IoIosArrowUp />
                     </button>
                     <span>{item.amount}</span>
                     <button
                       className={classes.cart__button_both}
                       onClick={() => decrement(item.id)}
-                    ><IoIosArrowDown/>
-                     
+                    >
+                      <IoIosArrowDown />
                     </button>
                   </div>
                 </section>
@@ -73,7 +73,9 @@ const Cart = () => {
               <input type="checkbox" />
               <small>This order contains a gift</small>
             </span>
-            <Link to="/payments" className={classes.Cart__subtotallink}>continue to checkout</Link>
+            <Link to="/payments" className={classes.Cart__subtotallink}>
+              continue to checkout
+            </Link>
           </div>
         )}
       </section>
@@ -82,4 +84,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

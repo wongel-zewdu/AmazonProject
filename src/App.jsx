@@ -18,9 +18,9 @@ import { Routes, Route } from "react-router-dom";
 import LayOut from "./components/LayOut/LayOut";
 import Routing from "./Router";
 import Auth from "./pages/Auth/Auth";
-import { Type } from "./utiliy/action.type";
+import { Type } from "./utility/action.type";
 import { DataContext } from "./components/DataProvider/Data provider";
-import { auth } from "./utiliy/firebase";
+import { auth } from "./utility/firebase";
 
 const App = () => {
   const [{ user }, dispatch] = useContext(DataContext);

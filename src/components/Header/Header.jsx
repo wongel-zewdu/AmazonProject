@@ -6,7 +6,7 @@ import { SlLocationPin } from "react-icons/sl";
 import classes from "./Header.module.css";
 import LowerHeader from "../LowerHeader/LowerHeader";
 import { DataContext } from "../DataProvider/Data provider";
-import { auth } from "../../utiliy/firebase";
+import { auth } from "../../utility/firebase";
 const Header = () => {
   const [{ user, basket }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => {
