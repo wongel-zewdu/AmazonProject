@@ -9,7 +9,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { db } from "../../utility/firebase";
 import { useNavigate } from "react-router-dom";
 const Payment = () => {
-  const [{ user, basket }] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
@@ -75,6 +75,7 @@ const Payment = () => {
               created: new Date(paymentIntent.created * 1000).toISOString(),
             });
           console.log("Data successfully written!");
+       dispatch({ type: "EMPTY_BASKET" });
 
           navigate("/orders", {
             state: { msg: "You have placed a new order" },
